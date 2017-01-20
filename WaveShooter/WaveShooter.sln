@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveShooter.CSharp.Plugins", "WaveShooter.CSharp.Plugins.csproj", "{4D1E33ED-5524-0FD9-08ED-49CF613EDF65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveShooter.CSharp", "WaveShooter.CSharp.csproj", "{AA515462-2124-F242-D6C0-6F87C32BDC5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveShooter.CSharp.Editor.Plugins", "WaveShooter.CSharp.Editor.Plugins.csproj", "{BA16541D-2DE8-ED96-70F2-7F350A3B94E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D1E33ED-5524-0FD9-08ED-49CF613EDF65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1E33ED-5524-0FD9-08ED-49CF613EDF65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1E33ED-5524-0FD9-08ED-49CF613EDF65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1E33ED-5524-0FD9-08ED-49CF613EDF65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA515462-2124-F242-D6C0-6F87C32BDC5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA515462-2124-F242-D6C0-6F87C32BDC5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA515462-2124-F242-D6C0-6F87C32BDC5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA515462-2124-F242-D6C0-6F87C32BDC5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA16541D-2DE8-ED96-70F2-7F350A3B94E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA16541D-2DE8-ED96-70F2-7F350A3B94E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA16541D-2DE8-ED96-70F2-7F350A3B94E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA16541D-2DE8-ED96-70F2-7F350A3B94E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
