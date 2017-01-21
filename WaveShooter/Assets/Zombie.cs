@@ -29,6 +29,17 @@ public class Zombie : MonoBehaviour
         }
     }
 
+    private Rigidbody _Rigidbody;
+    private Rigidbody m_Rigidbody
+    {
+        get
+        {
+            if (_Rigidbody == null)
+                _Rigidbody = GetComponent<Rigidbody>();
+            return _Rigidbody;
+        }
+    }
+
 
     // Use this for initialization
     void Start ()
@@ -49,5 +60,20 @@ public class Zombie : MonoBehaviour
         {
             m_Nav.SetDestination(m_PlayerObj.transform.position);
         }
+    }
+
+    IEnumerator GetDamage(Vector3 xForce)
+    {
+        m_Nav.enabled = false;
+        m_Rigidbody.isKinematic = false;
+        m_Rigidbody.AddForce(xForce);
+        yield return new WaitForSeconds(1.5f);
+        m_Nav.enabled = true;
+        m_Rigidbody.isKinematic = true;
+    }
+
+    public void Damage(Vector3 xForce)
+    {
+        StartCoroutine(GetDamage(xForce));
     }
 }
