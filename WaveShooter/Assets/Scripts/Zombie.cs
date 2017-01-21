@@ -107,14 +107,15 @@ public class Zombie : MonoBehaviour
         {
             m_Nav.enabled = false;
             m_Rigidbody.isKinematic = false;
-            m_Rigidbody.AddForce(transform.forward * -1);
+            m_Rigidbody.AddForce(m_PlayerObj.transform.forward * 10);
 
-            yield return new WaitForSeconds(2f);
 
             if (m_Life - 2 > 0)
                 m_Life -= 2;
             else
                 m_Life = 0;
+
+            yield return new WaitForSeconds(3f);
 
             if (m_Life <= 0)
             {
