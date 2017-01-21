@@ -3,7 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Spawner : MonoBehaviour {
+public class Spawner : MonoBehaviour
+{
+
+    private GameObject _playerObj;
+    private GameObject m_PlayerObj
+    {
+        get
+        {
+            if (_playerObj == null)
+                _playerObj = GameObject.FindGameObjectWithTag("Player");
+            return _playerObj;
+        }
+    }
+
     public List<EnemyList> m_Enemys = new List<EnemyList>();
 	// Use this for initialization
 	void Start ()
@@ -22,12 +35,18 @@ public class Spawner : MonoBehaviour {
 
     Vector3 Spawn()
     {
-        Vector3 randomDirection = GetRandomPosition();
-        randomDirection += transform.position;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, 100, 1);
-        return  hit.position;
-
+        Vector3 sPosition = Vector3.zero;
+        for(int i=0;i<3;i++)
+        { 
+            Vector3 randomDirection = GetRandomPosition();
+            randomDirection += transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, 100, 1);
+            sPosition = hit.position;
+            if (Vector3.Distance(m_PlayerObj.transform.position, hit.position) > 3)
+                break;
+        }
+        return sPosition;
     }
 
     void OnDrawGizmos()
