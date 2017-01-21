@@ -17,14 +17,14 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public List<EnemyList> m_Enemys = new List<EnemyList>();
+    public List<SpawnList> m_Objects = new List<SpawnList>();
 	// Use this for initialization
 	void Start ()
     {
-        for (int i = 0; i < m_Enemys.Count; i++)
+        for (int i = 0; i < m_Objects.Count; i++)
         {
-            for (int j = 0; j < m_Enemys[i].m_Count; j++)
-                Instantiate(m_Enemys[i].m_EnemyObj,Spawn(),Quaternion.identity);
+            for (int j = 0; j < m_Objects[i].m_Count; j++)
+                Instantiate(m_Objects[i].m_Obj, Spawn(),Quaternion.identity);
         }
     }
 	
@@ -80,8 +80,8 @@ public class Spawner : MonoBehaviour
 }
 
 [System.Serializable]
-public class EnemyList
+public class SpawnList
 {
-    public GameObject m_EnemyObj;
+    public GameObject m_Obj;
     public int m_Count;
 }

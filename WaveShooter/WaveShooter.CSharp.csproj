@@ -81,6 +81,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EatAmmo.cs" />
+    <Compile Include="Assets\EatMedikit.cs" />
     <Compile Include="Assets\Scripts\Chainsaw.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
