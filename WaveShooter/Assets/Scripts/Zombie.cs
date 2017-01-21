@@ -73,7 +73,11 @@ public class Zombie : MonoBehaviour
         if (!sExplote)
             m_Life--;
         else
+        {
             m_Life = 0;
+            Explotion();
+        }
+
 
         bool sRespawn = false;
         m_Nav.enabled = false;
@@ -112,7 +116,7 @@ public class Zombie : MonoBehaviour
 	}
 
 
-    IEnumerator GetCutted()
+    IEnumerator GetCutted(bool sExplode)
     {
         if (m_Nav.enabled)
         {
@@ -120,11 +124,18 @@ public class Zombie : MonoBehaviour
             m_Rigidbody.isKinematic = false;
             m_Rigidbody.AddForce(m_PlayerObj.transform.forward * 10);
 
-
-            if (m_Life - 2 > 0)
-                m_Life -= 2;
+            if (!sExplode)
+            {
+                if (m_Life - 2 > 0)
+                    m_Life -= 2;
+                else
+                    m_Life = 0;
+            }
             else
+            {
                 m_Life = 0;
+                Explotion();
+            }
 
             yield return new WaitForSeconds(3f);
 
@@ -141,11 +152,11 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    public void Cutted()
+    public void Cutted(bool sExplode)
     {
         if (m_Life > 0)
         {
-            StartCoroutine(GetCutted());
+            StartCoroutine(GetCutted(sExplode));
         }
     }
 

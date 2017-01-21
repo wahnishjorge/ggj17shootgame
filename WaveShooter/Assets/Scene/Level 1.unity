@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 1165029425}
+  m_MakeExplotionPercent: 50
 --- !u!65 &1055216622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -405,6 +406,7 @@ MonoBehaviour:
   gunEnd: {fileID: 1609298524}
   fpsCam: {fileID: 624522296}
   m_ChargeDecreaseAmmo: 3
+  m_OnChargeMakeExplotionPercent: 50
 --- !u!120 &1165029427
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -991,6 +993,9 @@ MonoBehaviour:
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
   m_ShootSound: {fileID: 8300000, guid: 81a6153000036344e98c354b326e080c, type: 3}
   m_Ammo: 5
+  m_Life: 5
+  m_MaxLife: 5
+  m_MaxAmmo: 10
 --- !u!143 &1828824330
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1034,7 +1039,7 @@ Prefab:
     - target: {fileID: 114140310790366754, guid: bf489f951d8faf845b2591c72fe8c000,
         type: 2}
       propertyPath: m_Objects.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4002208040984344, guid: bf489f951d8faf845b2591c72fe8c000, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1090,6 +1095,17 @@ Prefab:
       value: 
       objectReference: {fileID: 1708369369949642, guid: a54e5103be5703a40a80b6d18d16a7f2,
         type: 2}
+    - target: {fileID: 114140310790366754, guid: bf489f951d8faf845b2591c72fe8c000,
+        type: 2}
+      propertyPath: m_Objects.Array.data[2].m_Obj
+      value: 
+      objectReference: {fileID: 1708369369949642, guid: f46ed5375863c23488567fd22db9dc11,
+        type: 2}
+    - target: {fileID: 114140310790366754, guid: bf489f951d8faf845b2591c72fe8c000,
+        type: 2}
+      propertyPath: m_Objects.Array.data[2].m_Count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf489f951d8faf845b2591c72fe8c000, type: 2}
   m_IsPrefabParent: 0
