@@ -5,6 +5,8 @@ using UnityEngine;
 public class Chainsaw : MonoBehaviour
 {
     public Animator m_Animator;
+    [Range(0, 100)]
+    public int m_MakeExplotionPercent = 50;
 
     void OnTriggerStay(Collider other)
     {
@@ -13,7 +15,12 @@ public class Chainsaw : MonoBehaviour
             if (Input.GetButton("Fire2"))
             {
                 Zombie sZombie = other.gameObject.GetComponent<Zombie>();
-                sZombie.Cutted();
+                bool sExplode = false;
+                int sExplotePercent = Random.Range(1, 100);
+                if (sExplotePercent <= m_MakeExplotionPercent)
+                    sExplode = true;
+
+                sZombie.Cutted(sExplode);
                 m_Animator.SetInteger("Chain", 2);
             }
         }
