@@ -63,10 +63,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
+        public void GetDamaged()
+        {
+            if (m_Life - 1 >= 0)
+                m_Life--;
+            else
+                m_Life = 0;
+            Debug.Log("Auch");
+        }
 
         // Update is called once per frame
         private void Update()
         {
+            if (m_Life <= 0)
+                return;
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -105,6 +116,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+            if (m_Life <= 0)
+                return;
+
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at

@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.FirstPerson;
 
+[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class Zombie : MonoBehaviour
 {
-	public GameObject m_explotionGuy;
     public bool m_Move = true;
+    public float m_MinSpeed = 2f;
+    public float m_MaxSpeed = 3.5f;
     public int m_Life = 3;
+    public GameObject m_explotionGuy;
     private NavMeshAgent _nav;
     private NavMeshAgent m_Nav
     {
@@ -20,13 +25,13 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private GameObject _playerObj;
-    private GameObject m_PlayerObj
+    private FirstPersonController _playerObj;
+    private FirstPersonController m_PlayerObj
     {
         get
         {
             if (_playerObj == null)
-                _playerObj = GameObject.FindGameObjectWithTag("Player");
+                _playerObj = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
             return _playerObj;
         }
     }
@@ -52,20 +57,59 @@ public class Zombie : MonoBehaviour
             return _collider;
         }
     }
-    
-	
-	// Update is called once per frame
-	void Update () {
+
+    private Animator _anim;
+    private Animator m_Anim
+    {
+        get
+        {
+            if (_anim == null)
+                _anim = GetComponent<Animator>();
+            return _anim;
+        }
+    }
+
+    void Start()
+    {
+        m_Nav.speed = Random.Range(m_MinSpeed, m_MaxSpeed);
+    }
+
+    // Update is called once per frame
+    void Update() {
         if (m_Life > 0)
             MoveToPlayer();
     }
 
     void MoveToPlayer()
     {
-        if (m_Life > 0 && m_Move && m_Nav.enabled)
+        if (m_Life > 0 && m_Move && m_Nav.enabled && m_PlayerObj.m_Life > 0)
         {
+            m_Anim.SetInteger("Move", 1);
             m_Nav.SetDestination(m_PlayerObj.transform.position);
+            if (!m_MakeDamage && Vector3.Distance(transform.position, m_PlayerObj.transform.position) < 1.8f)
+            {
+                StartCoroutine(SetDamage());
+            }
+        } else
+        {
+            if (m_Life > 0)
+            {
+                m_Anim.SetInteger("Move", 0);
+                m_Nav.enabled = false;
+            }
         }
+    }
+
+    private bool m_MakeDamage = false;
+    IEnumerator SetDamage()
+    {
+        m_MakeDamage = true;
+        yield return new WaitForSeconds(1f);
+        if (m_Life > 0)
+        {
+            m_PlayerObj.GetDamaged();
+        }
+        m_MakeDamage = false;
     }
 
     IEnumerator GetDamage(Vector3 xForce, bool sExplote)
@@ -77,7 +121,6 @@ public class Zombie : MonoBehaviour
             m_Life = 0;
             Explotion();
         }
-
 
         bool sRespawn = false;
         m_Nav.enabled = false;
@@ -97,6 +140,7 @@ public class Zombie : MonoBehaviour
                 }
                 else
                 {
+                    WaveManager.ZombieDie();
                     m_Nav.enabled = false;
                     m_Collider.isTrigger = true;
                     Destroy(gameObject, 2);
@@ -112,7 +156,7 @@ public class Zombie : MonoBehaviour
 
 	void Explotion()
 	{
-		GetComponent<MeshRenderer>().enabled = false;
+		//GetComponent<MeshRenderer>().enabled = false;
 		//m_explotionGuy.gameObject.SetActive(true);
 	}
 
@@ -124,6 +168,8 @@ public class Zombie : MonoBehaviour
             m_Nav.enabled = false;
             m_Rigidbody.isKinematic = false;
             m_Rigidbody.AddForce(m_PlayerObj.transform.forward * 10);
+
+            yield return new WaitForSeconds(3f);
 
             if (!sExplode)
             {
@@ -140,7 +186,6 @@ public class Zombie : MonoBehaviour
                 Explotion();
             }
 
-            yield return new WaitForSeconds(3f);
 
             if (m_Life <= 0)
             {
