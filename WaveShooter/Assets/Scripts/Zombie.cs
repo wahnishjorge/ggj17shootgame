@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Zombie : MonoBehaviour
 {
+	public GameObject m_explotionGuy;
     public bool m_Move = true;
     public int m_Life = 3;
     private NavMeshAgent _nav;
@@ -99,6 +100,12 @@ public class Zombie : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+	void Explotion()
+	{
+		GetComponent<MeshRenderer>().enabled = false;
+		m_explotionGuy.gameObject.SetActive(true);
+	}
 
 
     IEnumerator GetCutted()
