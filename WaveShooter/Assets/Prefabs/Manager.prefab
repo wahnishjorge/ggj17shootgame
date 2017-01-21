@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1705396804220326}
+  m_IsPrefabParent: 1
+--- !u!1 &1705396804220326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4247586502412334}
+  - component: {fileID: 114925124585162412}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4247586502412334
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705396804220326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.93905616, y: 1.6732326, z: 4.5913725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114925124585162412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705396804220326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15006151adcca847aaa5fd224eb3a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Wave:
+  - m_Objects:
+    - m_Obj: {fileID: 1301723884683556, guid: bf87d76e84e1af44a82dd591449ba7b6, type: 2}
+      m_IsEnemy: 1
+      m_Count: 2
+    - m_Obj: {fileID: 1708369369949642, guid: f46ed5375863c23488567fd22db9dc11, type: 2}
+      m_IsEnemy: 0
+      m_Count: 1
+    - m_Obj: {fileID: 1708369369949642, guid: a54e5103be5703a40a80b6d18d16a7f2, type: 2}
+      m_IsEnemy: 0
+      m_Count: 2
+  - m_Objects:
+    - m_Obj: {fileID: 1301723884683556, guid: bf87d76e84e1af44a82dd591449ba7b6, type: 2}
+      m_IsEnemy: 1
+      m_Count: 3

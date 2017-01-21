@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Spawner : MonoBehaviour
 {
-
     private GameObject _playerObj;
     private GameObject m_PlayerObj
     {
@@ -17,23 +16,16 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public List<SpawnList> m_Objects = new List<SpawnList>();
-	// Use this for initialization
-	void Start ()
+    public void Spawn(List<SpawnList> xObjects)
     {
-        for (int i = 0; i < m_Objects.Count; i++)
+        for (int i = 0; i < xObjects.Count; i++)
         {
-            for (int j = 0; j < m_Objects[i].m_Count; j++)
-                Instantiate(m_Objects[i].m_Obj, Spawn(),Quaternion.identity);
+            for (int j = 0; j < xObjects[i].m_Count; j++)
+                Instantiate(xObjects[i].m_Obj, SpawnPosition(), Quaternion.identity);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    Vector3 Spawn()
+    Vector3 SpawnPosition()
     {
         Vector3 sPosition = Vector3.zero;
         for(int i=0;i<3;i++)
@@ -83,5 +75,6 @@ public class Spawner : MonoBehaviour
 public class SpawnList
 {
     public GameObject m_Obj;
+    public bool m_IsEnemy;
     public int m_Count;
 }

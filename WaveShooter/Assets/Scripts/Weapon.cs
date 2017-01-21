@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
+[RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
 {
     private bool m_Shooting = false;
@@ -22,6 +23,19 @@ public class Weapon : MonoBehaviour
     public int m_ChargeDecreaseAmmo = 3;
     [Range(0,100)]
     public int m_OnChargeMakeExplotionPercent = 50;
+
+    public AudioClip m_ChainSound;
+    public AudioClip m_CuttingSound;
+    private AudioSource _audiosource;
+    private AudioSource m_AudioSource
+    {
+        get
+        {
+            if(_audiosource == null)
+                _audiosource = GetComponent<AudioSource>();
+            return _audiosource;
+        }
+    }
 
     private FirstPersonController _player;
     private FirstPersonController m_Player
@@ -139,15 +153,47 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetButton("Fire2"))
         {
-            if(m_Animator.GetInteger("Chain") != 2)
+            if (m_Animator.GetInteger("Chain") != 2)
+            {
                 m_Animator.SetInteger("Chain", 1);
+                PlayChainSound();
+            }
         }
         if (Input.GetButtonUp("Fire2"))
         {
+            StopSound();
             m_Animator.SetInteger("Chain", 0);
         }
     }
 
+    public void StopSound()
+    {
+        m_AudioSource.Stop();
+    }
+
+    public void PlayChainSound()
+    {
+        if (m_AudioSource.isPlaying && m_AudioSource.clip == m_CuttingSound)
+            m_AudioSource.Stop();
+
+        if (!m_AudioSource.isPlaying)
+        {
+            m_AudioSource.clip = m_ChainSound;
+            m_AudioSource.Play();
+        }
+    }
+
+    public void PlayCutSound()
+    {
+        if (m_AudioSource.isPlaying && m_AudioSource.clip == m_ChainSound)
+            m_AudioSource.Stop();
+
+        if (!m_AudioSource.isPlaying)
+        {
+            m_AudioSource.clip = m_CuttingSound;
+            m_AudioSource.Play();
+        }
+    }
 
     private IEnumerator ShotEffect()
     {
