@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Chainsaw : MonoBehaviour
 {
+    public Weapon m_Weapon;
     public Animator m_Animator;
     [Range(0, 100)]
     public int m_MakeExplotionPercent = 50;
@@ -22,6 +23,7 @@ public class Chainsaw : MonoBehaviour
 
                 sZombie.Cutted(sExplode);
                 m_Animator.SetInteger("Chain", 2);
+                m_Weapon.PlayCutSound();
             }
         }
     }
@@ -31,9 +33,15 @@ public class Chainsaw : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             if (Input.GetButton("Fire2"))
+            {
                 m_Animator.SetInteger("Chain", 1);
+                m_Weapon.PlayChainSound();
+            }
             else
+            {
                 m_Animator.SetInteger("Chain", 0);
+                m_Weapon.StopSound();
+            }
         }
     }
 }

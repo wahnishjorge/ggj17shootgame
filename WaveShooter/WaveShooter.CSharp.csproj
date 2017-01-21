@@ -90,6 +90,7 @@
     <Compile Include="Assets\Sources\BloodBaby.cs" />
     <Compile Include="Assets\Sources\BloodyCamera.cs" />
     <Compile Include="Assets\Sources\CameraShake.cs" />
+    <Compile Include="Assets\WaveManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\MovingFloor.shader" />

@@ -105,6 +105,7 @@ public class Zombie : MonoBehaviour
         }
         if(!sRespawn)
         {
+            WaveManager.ZombieDie();
             Destroy(gameObject);
         }
     }
@@ -112,7 +113,7 @@ public class Zombie : MonoBehaviour
 	void Explotion()
 	{
 		GetComponent<MeshRenderer>().enabled = false;
-		m_explotionGuy.gameObject.SetActive(true);
+		//m_explotionGuy.gameObject.SetActive(true);
 	}
 
 
@@ -129,7 +130,9 @@ public class Zombie : MonoBehaviour
                 if (m_Life - 2 > 0)
                     m_Life -= 2;
                 else
+                {
                     m_Life = 0;
+                }
             }
             else
             {
@@ -142,6 +145,7 @@ public class Zombie : MonoBehaviour
             if (m_Life <= 0)
             {
                 m_Collider.isTrigger = true;
+                WaveManager.ZombieDie();
                 Destroy(gameObject, 3);
             }
             else
