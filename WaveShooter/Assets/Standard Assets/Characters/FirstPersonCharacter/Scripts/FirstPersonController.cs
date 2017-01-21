@@ -42,10 +42,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        public int m_Ammo = 5;
+        public int m_Life = 5;
+        public int m_MaxLife = 5;
+        public int m_MaxAmmo = 10;
 
         // Use this for initialization
         private void Start()
         {
+            m_Life = m_MaxLife;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;

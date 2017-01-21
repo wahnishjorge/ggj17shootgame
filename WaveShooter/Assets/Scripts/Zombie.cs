@@ -68,9 +68,13 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    IEnumerator GetDamage(Vector3 xForce)
+    IEnumerator GetDamage(Vector3 xForce, bool sExplote)
     {
-        m_Life--;
+        if (!sExplote)
+            m_Life--;
+        else
+            m_Life = 0;
+
         bool sRespawn = false;
         m_Nav.enabled = false;
         m_Rigidbody.isKinematic = false;
@@ -145,9 +149,9 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    public void Damage(Vector3 xForce)
+    public void Damage(Vector3 xForce, bool sExplote = false)
     {
         if(m_Life > 0)
-            StartCoroutine(GetDamage(xForce));
+            StartCoroutine(GetDamage(xForce, sExplote));
     }
 }

@@ -15,11 +15,13 @@ public class Weapon : MonoBehaviour
     public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 
     public Camera fpsCam;                                              // Holds a reference to the first person camera
-    private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
+    private WaitForSeconds shotDuration = new WaitForSeconds(0.52f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
                                                                         // Reference to the audio source which will play our shooting sound effect
 
     private float nextFire;                                             // Float to store the time the player will be allowed to fire again, after firing
-
+    public int m_ChargeDecreaseAmmo = 3;
+    [Range(0,100)]
+    public int m_OnChargeMakeExplotionPercent = 50;
 
     private FirstPersonController _player;
     private FirstPersonController m_Player
@@ -48,12 +50,17 @@ public class Weapon : MonoBehaviour
         if (xHit.collider.tag == "Enemy")
         {
             Zombie m_Zombie = xHit.collider.gameObject.GetComponent<Zombie>();
-            m_Zombie.Damage(-xHit.normal * (hitForce * (1 + xIncForce)));
+            bool sExplode = false;
+            int sExplotePercent = Random.Range(1, 100);
+            if (sExplotePercent <= m_OnChargeMakeExplotionPercent)
+                sExplode = true;
+            m_Zombie.Damage(-xHit.normal * (hitForce * (1 + xIncForce)), sExplode);
         }
     }
 
     private void Fire(float xIncForce)
     {
+        m_Shooting = true;
         // Update the time when our player can fire next
         nextFire = Time.time + fireRate;
 
@@ -87,30 +94,42 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    void DecreaseAmmo(int xValue = 1)
+    {
+        if (m_Player.m_Ammo - xValue >= 0)
+            m_Player.m_Ammo -= xValue;
+        else
+            m_Player.m_Ammo = 0;
+    }
+
     void Update()
     {
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-        if (!m_Shooting)
+        if (!m_Shooting && m_Player.m_Ammo > 0)
         {
             if (Input.GetButton("Fire1"))
             {
-                m_Timer += Time.deltaTime;
-                if (m_Timer > .29f)
+                if (m_Player.m_Ammo >= m_ChargeDecreaseAmmo)
                 {
-                    m_Animator.SetInteger("Shoot", 2);
+                    m_Timer += Time.deltaTime;
+                    if (m_Timer > .29f)
+                    {
+                        m_Animator.SetInteger("Shoot", 2);
+                    }
                 }
             }
             if (Input.GetButtonUp("Fire1"))
             {
-                m_Animator.SetInteger("Shoot", 1);
                 if (Time.time > nextFire)
                 {
                     if (m_Timer > .3f)
                     {
+                        DecreaseAmmo(m_ChargeDecreaseAmmo);
                         Fire(m_Timer * gunForce);
                     }
                     else
                     {
+                        DecreaseAmmo();
                         Fire(0);
                     }
                     m_Timer = 0;
@@ -132,7 +151,7 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator ShotEffect()
     {
-        m_Shooting = true;
+        m_Animator.SetInteger("Shoot", 1);
         // Play the shooting sound effect
         m_Player.PlayShootSound();
 
