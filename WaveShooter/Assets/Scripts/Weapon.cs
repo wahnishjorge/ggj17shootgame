@@ -118,6 +118,15 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        if (m_Player.m_Life <= 0)
+        {
+            m_Timer = 0;
+            m_Animator.SetInteger("Chain", 0);
+            m_Animator.SetInteger("Shoot", 0);
+            StopSound();
+            return;
+        }
+
         // Check if the player has pressed the fire button and if enough time has elapsed since they last fired
         if (!m_Shooting && m_Player.m_Ammo > 0)
         {
