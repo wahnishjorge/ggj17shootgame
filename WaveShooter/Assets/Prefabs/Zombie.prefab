@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Move: 0
+  m_Life: 3
 --- !u!136 &136673932044675306
 CapsuleCollider:
   m_ObjectHideFlags: 1
