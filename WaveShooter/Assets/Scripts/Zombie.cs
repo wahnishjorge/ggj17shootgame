@@ -9,6 +9,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Zombie : MonoBehaviour
 {
+	public GameObject _blood;
+	public SkinnedMeshRenderer _renderer;
     public bool m_Move = true;
     public float m_MinSpeed = 2f;
     public float m_MaxSpeed = 3.5f;
@@ -85,6 +87,7 @@ public class Zombie : MonoBehaviour
         if (m_Life > 0 && m_Move && m_Nav.enabled && m_PlayerObj.m_Life > 0)
         {
             m_Anim.SetInteger("Move", 1);
+			gameObject.transform.LookAt( new Vector3 (m_PlayerObj.transform.position.x, gameObject.transform.position.y, m_PlayerObj.transform.position.z));
             m_Nav.SetDestination(m_PlayerObj.transform.position);
             if (!m_MakeDamage && Vector3.Distance(transform.position, m_PlayerObj.transform.position) < 1.8f)
             {
@@ -104,7 +107,7 @@ public class Zombie : MonoBehaviour
     IEnumerator SetDamage()
     {
         m_MakeDamage = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
         if (m_Life > 0)
         {
             m_PlayerObj.GetDamaged();
@@ -143,7 +146,7 @@ public class Zombie : MonoBehaviour
                     WaveManager.ZombieDie();
                     m_Nav.enabled = false;
                     m_Collider.isTrigger = true;
-                    Destroy(gameObject, 2);
+                    Destroy(gameObject, 1f);
                 }
             }
         }
@@ -156,8 +159,10 @@ public class Zombie : MonoBehaviour
 
 	void Explotion()
 	{
-		//GetComponent<MeshRenderer>().enabled = false;
-		//m_explotionGuy.gameObject.SetActive(true);
+		m_Nav.enabled = false;
+		_renderer.enabled = false;
+		m_explotionGuy.gameObject.SetActive(true);
+		Instantiate(_blood, transform.position + Vector3.up , Quaternion.identity);
 	}
 
 

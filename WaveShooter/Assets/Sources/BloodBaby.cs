@@ -12,15 +12,15 @@ public class BloodBaby : MonoBehaviour
 		{
 			_blood.Add(child.gameObject);
 		}
+		Activate();
 	}
 
-	public void Activate(Vector3 xPos)
+	public void Activate()
 	{
-		gameObject.transform.position = xPos;
 		foreach (GameObject go in _blood)
 		{
 			go.gameObject.SetActive(true);
 		}
-		Destroy(this.gameObject,1.5f);
+		Destroy(this.gameObject,3.5f);
 	}
 }

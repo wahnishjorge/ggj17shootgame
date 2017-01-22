@@ -65,9 +65,12 @@ public class Weapon : MonoBehaviour
         {
             Zombie m_Zombie = xHit.collider.gameObject.GetComponent<Zombie>();
             bool sExplode = false;
-            int sExplotePercent = Random.Range(1, 100);
-            if (sExplotePercent <= m_OnChargeMakeExplotionPercent)
-                sExplode = true;
+			if (xIncForce > 0)
+			{
+				int sExplotePercent = Random.Range(1, 100);
+				if (sExplotePercent <= m_OnChargeMakeExplotionPercent)
+					sExplode = true;
+			}
             m_Zombie.Damage(-xHit.normal * (hitForce * (1 + xIncForce)), sExplode);
         }
     }
