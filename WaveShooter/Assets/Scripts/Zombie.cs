@@ -9,6 +9,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Zombie : MonoBehaviour
 {
+    private float m_DestroySeconds = 1;
+    private bool m_Die = false;
 	public GameObject _blood;
 	public SkinnedMeshRenderer _renderer;
     public bool m_Move = true;
@@ -80,6 +82,15 @@ public class Zombie : MonoBehaviour
     void Update() {
         if (m_Life > 0)
             MoveToPlayer();
+        else
+        {
+            if (!m_Die)
+            {
+                m_Die = true;
+                Destroy(gameObject, m_DestroySeconds);
+                WaveManager.ZombieDie();
+            }
+        }
     }
 
     void MoveToPlayer()
@@ -124,8 +135,7 @@ public class Zombie : MonoBehaviour
             m_Life = 0;
             Explotion();
         }
-
-        bool sRespawn = false;
+        
         m_Nav.enabled = false;
         m_Rigidbody.isKinematic = false;
         m_Rigidbody.AddForce(xForce);
@@ -135,7 +145,6 @@ public class Zombie : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, hit.position) < 1.3f)
             {
-                sRespawn = true;
                 if (m_Life > 0)
                 {
                     m_Nav.enabled = true;
@@ -143,17 +152,13 @@ public class Zombie : MonoBehaviour
                 }
                 else
                 {
-                    WaveManager.ZombieDie();
                     m_Nav.enabled = false;
                     m_Collider.isTrigger = true;
-                    Destroy(gameObject, 1f);
                 }
+            }else
+            {
+                m_Life = 0;
             }
-        }
-        if(!sRespawn)
-        {
-            WaveManager.ZombieDie();
-            Destroy(gameObject);
         }
     }
 
@@ -195,8 +200,7 @@ public class Zombie : MonoBehaviour
             if (m_Life <= 0)
             {
                 m_Collider.isTrigger = true;
-                WaveManager.ZombieDie();
-                Destroy(gameObject, 3);
+                m_DestroySeconds = 3f;
             }
             else
             {

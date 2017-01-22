@@ -81,17 +81,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EatAmmo.cs" />
-    <Compile Include="Assets\EatMedikit.cs" />
+    <Compile Include="Assets\RandomSpawn.cs" />
     <Compile Include="Assets\Scripts\Chainsaw.cs" />
+    <Compile Include="Assets\Scripts\EatAmmo.cs" />
+    <Compile Include="Assets\Scripts\EatMedikit.cs" />
+    <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\WaveManager.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <Compile Include="Assets\Scripts\Zombie.cs" />
     <Compile Include="Assets\Sources\BloodBaby.cs" />
     <Compile Include="Assets\Sources\BloodyCamera.cs" />
     <Compile Include="Assets\Sources\CameraShake.cs" />
-    <Compile Include="Assets\UIManager.cs" />
-    <Compile Include="Assets\WaveManager.cs" />
+    <Compile Include="Assets\Sources\FPSController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\MovingFloor.shader" />
