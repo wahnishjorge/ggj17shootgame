@@ -15,7 +15,10 @@ public class Chainsaw : MonoBehaviour
         {
             if (Input.GetButton("Fire2"))
             {
-                Zombie sZombie = other.gameObject.GetComponent<Zombie>();
+				if (m_Animator.GetInteger("Chain") != 2)
+					CameraShake.instance.Shake(0.5f,0.1f);
+
+				Zombie sZombie = other.gameObject.GetComponent<Zombie>();
                 bool sExplode = false;
                 int sExplotePercent = Random.Range(1, 100);
                 if (sExplotePercent <= m_MakeExplotionPercent)

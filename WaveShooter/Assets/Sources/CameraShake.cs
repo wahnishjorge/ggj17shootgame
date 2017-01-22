@@ -23,7 +23,7 @@ public class CameraShake : MonoBehaviour
 		_timeAtLastFrame = _timeAtCurrentFrame;
 	}
 
-	public static void Shake(float duration, float amount)
+	public void Shake(float duration, float amount)
 	{
 		instance._originalPos = instance.gameObject.transform.localPosition;
 		instance.StopAllCoroutines();
