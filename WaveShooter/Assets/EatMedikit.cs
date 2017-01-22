@@ -6,13 +6,13 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class EatMedikit : MonoBehaviour {
     public int m_Life = 3;
     private bool m_Used = false;
-    private FirstPersonController _player;
-    private FirstPersonController m_Player
+    private FPSController _player;
+    private FPSController m_Player
     {
         get
         {
             if (_player == null)
-                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
+                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSController>();
             return _player;
         }
     }
@@ -26,6 +26,7 @@ public class EatMedikit : MonoBehaviour {
                 m_Player.m_Life = m_Player.m_MaxLife;
             else
                 m_Player.m_Life += m_Life;
+			LevelManager.instance.GainLife(m_Player.m_Life);
             Destroy(gameObject);
         }
     }

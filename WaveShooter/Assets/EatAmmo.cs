@@ -7,13 +7,13 @@ public class EatAmmo : MonoBehaviour
 {
     public int m_Ammo = 5;
     private bool m_Used = false;
-    private FirstPersonController _player;
-    private FirstPersonController m_Player
+    private FPSController _player;
+    private FPSController m_Player
     {
         get
         {
             if (_player == null)
-                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
+                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSController>();
             return _player;
         }
     }
@@ -27,6 +27,7 @@ public class EatAmmo : MonoBehaviour
                 m_Player.m_Ammo = m_Player.m_MaxAmmo;
             else
                 m_Player.m_Ammo += m_Ammo;
+			LevelManager.instance.SetAmmo(m_Player.m_Ammo.ToString() + "/" + m_Player.m_MaxAmmo.ToString());
             Destroy(gameObject);
         }
     }
