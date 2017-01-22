@@ -38,10 +38,22 @@ public class LevelManager : MonoBehaviour
     public void LoadRandomLevel()
     {
         loading.SetActive(true);
-        SceneManager.LoadSceneAsync("Level R", LoadSceneMode.Single);
-    }
+		int levelToLoad = Random.Range(0, 5);
+		if (levelToLoad <= 3)
+			SceneManager.LoadSceneAsync("Level P", LoadSceneMode.Single);
+		else
+			SceneManager.LoadSceneAsync("Level R", LoadSceneMode.Single);
 
-    public void SetText(string xText)
+	}
+
+	public void LoadLevel()
+	{
+		loading.SetActive(true);
+		int scene = SceneManager.GetActiveScene().buildIndex + 1;
+		SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
+	}
+
+	public void SetText(string xText)
 	{
 		_waveTimer.text = xText;
 	}

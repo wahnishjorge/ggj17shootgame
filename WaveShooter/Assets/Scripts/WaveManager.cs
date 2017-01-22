@@ -29,6 +29,11 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+	void Awake()
+	{
+		StopAllCoroutines();
+	}
+
     // Use this for initialization
     void Start()
     {
@@ -95,8 +100,10 @@ public class WaveManager : MonoBehaviour
 			yield return new WaitForSeconds(1f);
 			LevelManager.instance.SetText("Go to next level in 1");
 			yield return new WaitForSeconds(1f);
-            if (m_IsRandomLevel)
-                LevelManager.instance.LoadRandomLevel();
+			if (m_IsRandomLevel)
+				LevelManager.instance.LoadRandomLevel();
+			else
+				LevelManager.instance.LoadLevel();
         }
     }
 
