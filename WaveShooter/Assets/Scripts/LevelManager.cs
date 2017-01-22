@@ -19,6 +19,12 @@ public class LevelManager : MonoBehaviour
 		instance = this;
 	}
 
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Return))
+			SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+	}
+
 	public void SetWave(int xWave)
 	{
 		_waveText.text = "Wave - " + xWave.ToString();
@@ -54,5 +60,4 @@ public class LevelManager : MonoBehaviour
 	{
 		_life[xLife].SetActive(true);
 	}
-
 }
