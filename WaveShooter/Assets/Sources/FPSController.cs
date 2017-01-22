@@ -46,6 +46,7 @@ public class FPSController : MonoBehaviour
     public int m_Life = 5;
     public int m_MaxLife = 5;
     public int m_MaxAmmo = 10;
+    public GameObject m_WeaponObj;
 
     // Use this for initialization
     private void Start()
@@ -66,9 +67,15 @@ public class FPSController : MonoBehaviour
     public void GetDamaged()
     {
         if (m_Life - 1 >= 0)
+        {
             m_Life--;
+            if (m_Life == 0)
+                m_WeaponObj.SetActive(false);
+        }
         else
+        {
             m_Life = 0;
+        }
 		LevelManager.instance.LoseLife(m_Life);
     }
 

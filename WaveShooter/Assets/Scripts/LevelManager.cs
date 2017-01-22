@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class LevelManager : MonoBehaviour
 	public Text _waveText;
 	public Text _ammoText;
 	public GameObject[] _life;
+    public GameObject loading;
 
-	void Awake()
+    void Awake()
 	{
 		instance = this;
 	}
@@ -27,8 +29,13 @@ public class LevelManager : MonoBehaviour
 		_waveTimer.text = xTimer.ToString();
 	}
 
+    public void LoadRandomLevel()
+    {
+        loading.SetActive(true);
+        SceneManager.LoadSceneAsync("Level R", LoadSceneMode.Single);
+    }
 
-	public void SetText(string xText)
+    public void SetText(string xText)
 	{
 		_waveTimer.text = xText;
 	}

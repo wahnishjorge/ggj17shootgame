@@ -20,6 +20,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < xObjects.Count; i++)
         {
+            xObjects[i].m_Count = Random.Range(xObjects[i].m_CountMin, xObjects[i].m_CountMax);
             for (int j = 0; j < xObjects[i].m_Count; j++)
                 Instantiate(xObjects[i].m_Obj, SpawnPosition(), Quaternion.identity);
         }
@@ -76,5 +77,7 @@ public class SpawnList
 {
     public GameObject m_Obj;
     public bool m_IsEnemy;
-    public int m_Count;
+    public int m_Count = 1;
+    public int m_CountMin = 1;
+    public int m_CountMax = 1;
 }
