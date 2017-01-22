@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Life: 5
   m_MaxLife: 5
   m_MaxAmmo: 10
+  m_WeaponObj: {fileID: 1710030515602350}
 --- !u!114 &114623950011456942
 MonoBehaviour:
   m_ObjectHideFlags: 1
