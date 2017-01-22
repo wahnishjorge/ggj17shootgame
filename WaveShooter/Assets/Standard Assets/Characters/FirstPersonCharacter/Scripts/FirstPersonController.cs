@@ -69,7 +69,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Life--;
             else
                 m_Life = 0;
-            Debug.Log("Auch");
         }
 
         // Update is called once per frame

@@ -27,13 +27,13 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private FirstPersonController _playerObj;
-    private FirstPersonController m_PlayerObj
+    private FPSController _playerObj;
+    private FPSController m_PlayerObj
     {
         get
         {
             if (_playerObj == null)
-                _playerObj = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
+                _playerObj = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSController>();
             return _playerObj;
         }
     }

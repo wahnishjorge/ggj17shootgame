@@ -37,13 +37,13 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private FirstPersonController _player;
-    private FirstPersonController m_Player
+    private FPSController _player;
+    private FPSController m_Player
     {
         get
         {
             if (_player == null)
-                _player = m_PlayerObj.GetComponent<FirstPersonController>();
+                _player = m_PlayerObj.GetComponent<FPSController>();
             return _player;
         }
     }
@@ -58,6 +58,11 @@ public class Weapon : MonoBehaviour
             return _animator;
         }
     }
+
+	void Start()
+	{
+		LevelManager.instance.SetAmmo(m_Player.m_Ammo.ToString() + "/" + m_Player.m_MaxAmmo.ToString());
+	}
 
     private void DamageEnemy(RaycastHit xHit, float xIncForce)
     {
@@ -117,7 +122,8 @@ public class Weapon : MonoBehaviour
             m_Player.m_Ammo -= xValue;
         else
             m_Player.m_Ammo = 0;
-    }
+		LevelManager.instance.SetAmmo(m_Player.m_Ammo.ToString() + "/" + m_Player.m_MaxAmmo.ToString());
+	}
 
     void Update()
     {

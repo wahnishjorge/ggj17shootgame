@@ -38,8 +38,8 @@ GameObject:
   - component: {fileID: 33682656281839178}
   - component: {fileID: 65945217903447658}
   - component: {fileID: 23168593166173996}
-  - component: {fileID: 114608876222095150}
   - component: {fileID: 54923435847465884}
+  - component: {fileID: 114249417156639644}
   m_Layer: 0
   m_Name: Medikit
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 11e7112389bba6e4bac89da65118b484, type: 2}
+  - {fileID: 2100000, guid: ebacbbd9133b3774c9be8441f9af3713, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +151,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1.25, z: 1.25}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114608876222095150
+--- !u!114 &114249417156639644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1708369369949642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4160b742064329247975018356ce0a16, type: 3}
+  m_Script: {fileID: 11500000, guid: b60b68317ad66de43be7ff8b76d8f3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Ammo: 5
+  m_Life: 1

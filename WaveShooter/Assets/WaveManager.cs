@@ -53,29 +53,31 @@ public class WaveManager : MonoBehaviour
         {
             m_Wait = true;
             m_WaveExist = true;
-            Debug.Log("Wave " + (m_CurrentWave + 1).ToString());
+			LevelManager.instance.SetWave(m_CurrentWave + 1);
+			yield return new WaitForSeconds(1f);
+			LevelManager.instance.SetTimer(3);
             yield return new WaitForSeconds(1f);
-            Debug.Log("3");
-            yield return new WaitForSeconds(1f);
-            Debug.Log("2");
-            yield return new WaitForSeconds(1f);
-            Debug.Log("1");
-            yield return new WaitForSeconds(1f);
-            Debug.Log("Survive");
-            NextWave();
+			LevelManager.instance.SetTimer(2);
+			yield return new WaitForSeconds(1f);
+			LevelManager.instance.SetTimer(1);
+			yield return new WaitForSeconds(1f);
+			LevelManager.instance.SetText("Survive");
+			yield return new WaitForSeconds(0.5f);
+			LevelManager.instance.SetText("");
+			NextWave();
             m_Wait = false;
         }
         else
         {
             m_WaveExist = false;
-            Debug.Log("You win!!");
+			LevelManager.instance.SetText("You win!!");
             yield return new WaitForSeconds(1f);
-            Debug.Log("Will exit in 3");
-            yield return new WaitForSeconds(1f);
-            Debug.Log("Will exit in 2");
-            yield return new WaitForSeconds(1f);
-            Debug.Log("Will exit in 1");
-            yield return new WaitForSeconds(1f);
+			LevelManager.instance.SetText("Go to next level in 3");
+			yield return new WaitForSeconds(1f);
+			LevelManager.instance.SetText("Go to next level in 2");
+			yield return new WaitForSeconds(1f);
+			LevelManager.instance.SetText("Go to next level in 1");
+			yield return new WaitForSeconds(1f);
         }
     }
 
