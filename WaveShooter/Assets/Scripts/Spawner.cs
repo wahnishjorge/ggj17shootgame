@@ -26,7 +26,23 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    Vector3 SpawnPosition()
+	public static void Spawn(Spawner xSpawn, List<SpawnList> xObjects)
+	{
+		for (int i = 0; i < xObjects.Count; i++)
+		{
+			xObjects[i].m_Count = Random.Range(xObjects[i].m_CountMin, xObjects[i].m_CountMax);
+			for (int j = 0; j < xObjects[i].m_Count; j++)
+				Instantiate(xObjects[i].m_Obj, xSpawn.SpawnPosition(), Quaternion.identity);
+		}
+	}
+
+	public static void Spawn(Spawner xSpawn, SpawnList xObjects)
+	{
+		xObjects.m_Count++;
+		Instantiate(xObjects.m_Obj, xSpawn.SpawnPosition(), Quaternion.identity);
+	}
+
+	Vector3 SpawnPosition()
     {
         Vector3 sPosition = Vector3.zero;
         for(int i=0;i<3;i++)

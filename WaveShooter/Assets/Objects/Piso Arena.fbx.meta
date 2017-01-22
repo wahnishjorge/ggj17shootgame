@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 42d0e0d622e57e644babb75f4b573bda
-timeCreated: 1485041703
+guid: 72e637877a44add4ca6cecd39de91bcf
+timeCreated: 1485087336
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Tacho Basura
+    4300000: Plano Piso Arena
   materials:
     importMaterials: 1
     materialName: 0
