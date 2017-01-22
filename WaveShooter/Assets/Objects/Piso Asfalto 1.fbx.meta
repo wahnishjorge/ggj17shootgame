@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d3805fb8781ab4249b536db79ebf6745
+guid: a2ac042de74b3a74b8d365b064c3c260
 timeCreated: 1485087336
 licenseType: Free
 ModelImporter:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Vereda
+    4300000: Plano Piso Asfalto 1
   materials:
     importMaterials: 1
     materialName: 0

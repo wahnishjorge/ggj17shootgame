@@ -1,15 +1,35 @@
 fileFormatVersion: 2
-guid: d3805fb8781ab4249b536db79ebf6745
-timeCreated: 1485087336
+guid: bd65317b6c8d6d345ae9c843b83d1fd3
+timeCreated: 1485085956
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Vereda
+    100000: Cube.002
+    100002: Cube.004
+    100004: Cube.005
+    100006: Cube.006
+    100008: //RootNode
+    400000: Cube.002
+    400002: Cube.004
+    400004: Cube.005
+    400006: Cube.006
+    400008: //RootNode
+    2300000: Cube.002
+    2300002: Cube.004
+    2300004: Cube.005
+    2300006: Cube.006
+    2300008: //RootNode
+    3300000: Cube.002
+    3300002: Cube.004
+    3300004: Cube.005
+    3300006: Cube.006
+    3300008: //RootNode
+    4300000: Edif 02
+    4300002: Cube.002
+    4300004: Cube.006
+    4300006: Cube.005
+    4300008: Cube.004
   materials:
     importMaterials: 1
     materialName: 0

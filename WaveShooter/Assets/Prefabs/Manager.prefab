@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4247586502412334}
   - component: {fileID: 114925124585162412}
+  - component: {fileID: 114744820375865776}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -40,6 +41,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114744820375865776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705396804220326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc369bc066c65247bc5af2aa502d3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waveTimer: {fileID: 0}
+  _waveText: {fileID: 0}
+  _ammoText: {fileID: 0}
+  _life:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114925124585162412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Wave:
   - m_Objects:
-    - m_Obj: {fileID: 1301723884683556, guid: bf87d76e84e1af44a82dd591449ba7b6, type: 2}
+    - m_Obj: {fileID: 1657659441632952, guid: a7b7305b1e045914fb51adaeb66f5412, type: 2}
       m_IsEnemy: 1
       m_Count: 2
     - m_Obj: {fileID: 1708369369949642, guid: f46ed5375863c23488567fd22db9dc11, type: 2}
@@ -63,6 +84,6 @@ MonoBehaviour:
       m_IsEnemy: 0
       m_Count: 2
   - m_Objects:
-    - m_Obj: {fileID: 1301723884683556, guid: bf87d76e84e1af44a82dd591449ba7b6, type: 2}
+    - m_Obj: {fileID: 1657659441632952, guid: a7b7305b1e045914fb51adaeb66f5412, type: 2}
       m_IsEnemy: 1
       m_Count: 3
