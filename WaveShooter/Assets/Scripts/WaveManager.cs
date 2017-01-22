@@ -54,15 +54,12 @@ public class WaveManager : MonoBehaviour
 			for (int i = 0; i < sCount; i++)
 			{
 				Spawner.Spawn(m_Spawner[Random.Range(0, m_Spawner.Count - 1)], sSpawnList);
-			}
-		}
-
-
-		foreach (SpawnList sList in m_Wave[m_CurrentWave].m_Objects)
-        {
-            if (sList.m_IsEnemy)
-                m_ZombiesCount += sList.m_Count;
+            }
+            if (sSpawnList.m_IsEnemy)
+                m_ZombiesCount += sCount;
         }
+
+
         m_CurrentWave++;
     }
 

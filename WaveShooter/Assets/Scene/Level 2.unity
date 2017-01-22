@@ -519,7 +519,7 @@ Prefab:
     - target: {fileID: 224824662129554550, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224439302478175696, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
@@ -539,7 +539,7 @@ Prefab:
     - target: {fileID: 224439302478175696, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224264805654535886, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
@@ -559,7 +559,7 @@ Prefab:
     - target: {fileID: 224264805654535886, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224527374297609246, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
@@ -579,7 +579,7 @@ Prefab:
     - target: {fileID: 224527374297609246, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224124736052677728, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
@@ -599,7 +599,7 @@ Prefab:
     - target: {fileID: 224124736052677728, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114468388269632108, guid: 2a1d40e8a54c1d44a94e67b8e59b0ade,
         type: 2}
@@ -2632,6 +2632,11 @@ Prefab:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114614617616712882, guid: bd26e184f6a2dd144a392ba945bda460,
+        type: 2}
+      propertyPath: m_WeaponObj
+      value: 
+      objectReference: {fileID: 830688206}
     m_RemovedComponents:
     - {fileID: 120972184332457068, guid: bd26e184f6a2dd144a392ba945bda460, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bd26e184f6a2dd144a392ba945bda460, type: 2}
@@ -4048,6 +4053,11 @@ Light:
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &830688206 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1710030515602350, guid: bd26e184f6a2dd144a392ba945bda460,
+    type: 2}
+  m_PrefabInternal: {fileID: 492161102}
 --- !u!1 &831957154 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 2b7cfe52d49562842aaab9be2871e783, type: 3}
