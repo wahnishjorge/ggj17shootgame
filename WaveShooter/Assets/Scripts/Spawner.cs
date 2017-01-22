@@ -32,7 +32,6 @@ public class Spawner : MonoBehaviour
         for(int i=0;i<3;i++)
         { 
             Vector3 randomDirection = GetRandomPosition();
-            randomDirection += transform.position;
             NavMeshHit hit;
             NavMesh.SamplePosition(randomDirection, out hit, 100, 1);
             sPosition = hit.position;
