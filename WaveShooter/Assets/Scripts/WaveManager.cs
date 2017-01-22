@@ -46,8 +46,19 @@ public class WaveManager : MonoBehaviour
     void NextWave()
     {
         m_ZombiesCount = 0;
-        m_Spawner[Random.Range(0, m_Spawner.Count - 1)].Spawn(m_Wave[m_CurrentWave].m_Objects);
-        foreach (SpawnList sList in m_Wave[m_CurrentWave].m_Objects)
+		//m_Spawner[Random.Range(0, m_Spawner.Count - 1)].Spawn(m_Wave[m_CurrentWave].m_Objects);
+		//Spawner.Spawn(m_Spawner[Random.Range(0, m_Spawner.Count - 1)], m_Wave[m_CurrentWave].m_Objects);
+		foreach (SpawnList sSpawnList in m_Wave[m_CurrentWave].m_Objects)
+		{
+			int sCount = Random.Range(sSpawnList.m_CountMin, sSpawnList.m_CountMax);
+			for (int i = 0; i < sCount; i++)
+			{
+				Spawner.Spawn(m_Spawner[Random.Range(0, m_Spawner.Count - 1)], sSpawnList);
+			}
+		}
+
+
+		foreach (SpawnList sList in m_Wave[m_CurrentWave].m_Objects)
         {
             if (sList.m_IsEnemy)
                 m_ZombiesCount += sList.m_Count;
