@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Assets\EatAmmo.cs" />
     <Compile Include="Assets\EatMedikit.cs" />
+    <Compile Include="Assets\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Chainsaw.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Sources\BloodBaby.cs" />
     <Compile Include="Assets\Sources\BloodyCamera.cs" />
     <Compile Include="Assets\Sources\CameraShake.cs" />
+    <Compile Include="Assets\Sources\FPSController.cs" />
     <Compile Include="Assets\UIManager.cs" />
     <Compile Include="Assets\WaveManager.cs" />
   </ItemGroup>
